@@ -53,8 +53,8 @@ export default function HomePage() {
 
       setScrollProgress(progress);
 
-      // Determine active stage index (0 to 7 for factory stages, 8 for showroom)
-      const stageIdx = Math.min(Math.floor(progress * 8.2), 8);
+      // Determine active stage index (0 to 2 for factory stages, 3 for showroom)
+      const stageIdx = Math.min(Math.floor(progress * 3.2), 3);
       setActiveStageIndex(stageIdx);
 
       // Update sound engine acoustic environment
@@ -123,7 +123,7 @@ export default function HomePage() {
       />
 
       {/* 7. Scroll Track for 3D Factory Journey (Scroll Height = Camera Movement) */}
-      <div id="factory-tour" ref={factoryTrackRef} className="relative h-[650vh] w-full pointer-events-none">
+      <div id="factory-tour" ref={factoryTrackRef} className="relative h-[240vh] w-full pointer-events-none">
         {/* Helper instruction at top */}
         <div className="absolute top-32 left-1/2 -translate-x-1/2 text-center pointer-events-auto">
           <span className="px-4 py-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-[10px] font-mono tracking-widest text-slate-400 uppercase animate-bounce">

@@ -13,34 +13,24 @@ export function CameraRig({ scrollProgress }: CameraRigProps) {
 
   // 3D Spline Path through the entire factory
   const { pathCurve, targetCurve } = useMemo(() => {
-    // Camera positions along the journey
+    // Camera positions along the 3-stage journey
     const cameraWaypoints = [
-      new THREE.Vector3(0, 2.4, 14),     // 0.00: Outside entrance
-      new THREE.Vector3(0, 2.3, 4),      // 0.08: Approaching gates
-      new THREE.Vector3(-0.8, 2.2, -18), // 0.18: Zone 01 entrance
-      new THREE.Vector3(-1.2, 2.3, -42), // 0.28: Zone 01 Raw Material
-      new THREE.Vector3(1.0, 2.4, -72),  // 0.38: Zone 02 Cutting
-      new THREE.Vector3(0, 2.3, -105),   // 0.50: Zone 03 Stitching & 50,000 Capacity
-      new THREE.Vector3(0, 2.2, -138),   // 0.62: Zone 04 Quality Control
-      new THREE.Vector3(0.6, 2.2, -165), // 0.72: Zone 05 Finishing
-      new THREE.Vector3(-0.6, 2.2, -192),// 0.82: Zone 06 Packaging
-      new THREE.Vector3(0, 2.4, -222),   // 0.90: Zone 07 Dispatch Bay
-      new THREE.Vector3(0, 2.2, -260),   // 1.00: Inside Luxury Showroom
+      new THREE.Vector3(0, 2.4, 14),     // 0.00: Outside entrance facade
+      new THREE.Vector3(0, 2.3, 0),      // 0.15: Sliding gates entry
+      new THREE.Vector3(-0.9, 2.3, -38), // 0.35: Stage 01: Raw Material racks
+      new THREE.Vector3(0, 2.3, -75),    // 0.65: Stage 02: Stitching & 50,000 Pcs monument
+      new THREE.Vector3(0, 2.2, -112),   // 0.85: Stage 03: Quality & Packaging line
+      new THREE.Vector3(0, 2.2, -145),   // 1.00: Luxury Showroom threshold
     ];
 
     // Look-At Targets along the journey
     const targetWaypoints = [
       new THREE.Vector3(0, 2.2, 0),
-      new THREE.Vector3(0, 2.2, -10),
-      new THREE.Vector3(0, 2.0, -32),
-      new THREE.Vector3(0, 2.0, -56),
-      new THREE.Vector3(0, 1.8, -86),
-      new THREE.Vector3(0, 2.4, -120),
-      new THREE.Vector3(0, 2.0, -150),
-      new THREE.Vector3(0, 1.9, -178),
-      new THREE.Vector3(0, 1.9, -205),
-      new THREE.Vector3(0, 2.2, -240),
-      new THREE.Vector3(0, 1.8, -275),
+      new THREE.Vector3(0, 2.2, -20),
+      new THREE.Vector3(0, 2.0, -55),
+      new THREE.Vector3(0, 2.5, -92),
+      new THREE.Vector3(0, 2.0, -130),
+      new THREE.Vector3(0, 1.8, -165),
     ];
 
     return {

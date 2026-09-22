@@ -142,7 +142,7 @@ export function RawMaterialZone() {
   ];
 
   return (
-    <group position={[0, 0, -42]}>
+    <group position={[0, 0, -38]}>
       {/* Left Multi-Tier Fabric Storage Rack */}
       <group position={[-5.5, 0, 0]}>
         {/* Steel Uprights */}
@@ -246,110 +246,7 @@ export function RawMaterialZone() {
   );
 }
 
-// 3. ZONE 02: CUTTING (Z: -60 to -85)
-export function CuttingZone() {
-  const laserBeamRef = useRef<THREE.Mesh>(null);
-  const cuttingHeadRef = useRef<THREE.Group>(null);
 
-  useFrame((state) => {
-    const t = state.clock.elapsedTime;
-    const laserX = Math.sin(t * 1.8) * 1.6;
-    if (cuttingHeadRef.current) {
-      cuttingHeadRef.current.position.x = laserX;
-    }
-    if (laserBeamRef.current) {
-      laserBeamRef.current.position.x = laserX;
-      // Subtle pulse in intensity
-      const mat = laserBeamRef.current.material as THREE.MeshBasicMaterial;
-      if (mat) mat.opacity = 0.55 + Math.sin(t * 10) * 0.15;
-    }
-  });
-
-  return (
-    <group position={[0, 0, -72]}>
-      {/* Industrial High-Precision Cutting Table */}
-      <group position={[0, 0, 0]}>
-        {/* Table Top Surface */}
-        <mesh position={[0, 1.4, 0]}>
-          <boxGeometry args={[4.2, 0.2, 8]} />
-          <meshStandardMaterial color={PALETTE.slateDark} roughness={0.4} metalness={0.6} />
-        </mesh>
-
-        {/* Fabric Spread Stack (Multi-layer fabric ready for cut) */}
-        <mesh position={[0, 1.55, 0]}>
-          <boxGeometry args={[3.6, 0.1, 7.2]} />
-          <meshStandardMaterial color={PALETTE.graphite} roughness={0.9} metalness={0.1} />
-        </mesh>
-
-        {/* Heavy Table Framework & Legs */}
-        {[-1.8, 1.8].map((x, xIdx) =>
-          [-3.5, 0, 3.5].map((z, zIdx) => (
-            <mesh key={`${xIdx}-${zIdx}`} position={[x, 0.7, z]}>
-              <boxGeometry args={[0.2, 1.4, 0.2]} />
-              <meshStandardMaterial color={PALETTE.deepSlate} metalness={0.7} roughness={0.3} />
-            </mesh>
-          ))
-        )}
-
-        {/* Gantry Overhead Bridge (Moves along length) */}
-        <group position={[0, 2.8, 0]}>
-          <mesh position={[0, 0, 0]}>
-            <boxGeometry args={[4.4, 0.25, 0.4]} />
-            <meshStandardMaterial color={PALETTE.steel} metalness={0.8} roughness={0.2} />
-          </mesh>
-          {/* Side Gantry Uprights */}
-          <mesh position={[-2.1, -0.65, 0]}>
-            <boxGeometry args={[0.18, 1.4, 0.35]} />
-            <meshStandardMaterial color={PALETTE.slateMedium} metalness={0.7} roughness={0.3} />
-          </mesh>
-          <mesh position={[2.1, -0.65, 0]}>
-            <boxGeometry args={[0.18, 1.4, 0.35]} />
-            <meshStandardMaterial color={PALETTE.slateMedium} metalness={0.7} roughness={0.3} />
-          </mesh>
-
-          {/* Precision Cutting Head */}
-          <group ref={cuttingHeadRef} position={[0, -0.15, 0]}>
-            <mesh>
-              <boxGeometry args={[0.45, 0.35, 0.3]} />
-              <meshStandardMaterial color={PALETTE.white} metalness={0.9} roughness={0.1} />
-            </mesh>
-          </group>
-        </group>
-
-        {/* Projected Laser Guide Line (Monochromatic sharp white line) */}
-        <mesh ref={laserBeamRef} position={[0, 1.62, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[0.04, 7.2]} />
-          <meshBasicMaterial color={PALETTE.glowWhite} transparent opacity={0.7} />
-        </mesh>
-
-        {/* CAD Blueprint Display Monitor Console */}
-        <group position={[2.8, 1.8, 2]}>
-          <mesh>
-            <boxGeometry args={[0.08, 0.9, 1.2]} />
-            <meshStandardMaterial color={PALETTE.deepSlate} metalness={0.7} roughness={0.3} />
-          </mesh>
-          {/* Glowing CAD Screen */}
-          <mesh position={[-0.05, 0, 0]}>
-            <planeGeometry args={[1.1, 0.8]} />
-            <meshBasicMaterial color={PALETTE.silver} />
-          </mesh>
-        </group>
-      </group>
-
-      {/* Overhead Zone Banner */}
-      <Text
-        position={[0, 6.8, 0]}
-        fontSize={0.28}
-        color={PALETTE.white}
-        anchorX="center"
-        anchorY="middle"
-        letterSpacing={0.2}
-      >
-        02 // PRECISION CAD & LASER CUTTING
-      </Text>
-    </group>
-  );
-}
 
 // 4. ZONE 03: STITCHING & 50,000 PCS/MO CAPACITY (Z: -90 to -120)
 export function StitchingZone() {
@@ -364,7 +261,7 @@ export function StitchingZone() {
   });
 
   return (
-    <group position={[0, 0, -105]}>
+    <group position={[0, 0, -75]}>
       {/* Linear Rows of Industrial Sewing Stations (Left & Right) */}
       {[-3.2, 3.2].map((rowX, rowIdx) => (
         <group key={rowIdx} position={[rowX, 0, 0]}>
@@ -484,52 +381,102 @@ export function StitchingZone() {
         anchorY="middle"
         letterSpacing={0.2}
       >
-        03 // HIGH-PRECISION STITCHING LINES
+        02 // HIGH-PRECISION STITCHING LINES
       </Text>
     </group>
   );
 }
 
-// 5. ZONE 04: QUALITY CONTROL (Z: -125 to -150)
-export function QualityControlZone() {
-  const checkItems = ['FABRIC', 'STITCHING', 'FINISHING', 'FINAL CHECK'];
+// 3. ZONE 03: QUALITY & PACKAGING (Z: -112)
+export function QualityAndPackagingZone() {
+  const boxGroupRef = useRef<THREE.Group>(null);
+  const checkItems = ['FABRIC AUDIT', 'STITCH INTEGRITY', 'FINISHING & LABELS', 'FINAL DISPATCH CHECK'];
+
+  useFrame((state) => {
+    if (boxGroupRef.current) {
+      const t = (state.clock.elapsedTime * 0.8) % 3.0;
+      boxGroupRef.current.position.z = -t;
+    }
+  });
 
   return (
-    <group position={[0, 0, -138]}>
+    <group position={[0, 0, -112]}>
       {/* High-CRI Pristine White Inspection Table */}
-      <mesh position={[0, 1.3, 0]}>
-        <boxGeometry args={[4.4, 0.2, 5.5]} />
-        <meshStandardMaterial color={PALETTE.white} roughness={0.15} metalness={0.2} />
-      </mesh>
-      {/* Heavy Base */}
-      <mesh position={[0, 0.6, 0]}>
-        <boxGeometry args={[3.8, 1.2, 4.8]} />
-        <meshStandardMaterial color={PALETTE.slateDark} roughness={0.6} metalness={0.4} />
-      </mesh>
+      <group position={[-2.8, 0, 0]}>
+        <mesh position={[0, 1.3, 0]}>
+          <boxGeometry args={[3.4, 0.2, 4.4]} />
+          <meshStandardMaterial color={PALETTE.white} roughness={0.15} metalness={0.2} />
+        </mesh>
+        <mesh position={[0, 0.6, 0]}>
+          <boxGeometry args={[3.0, 1.2, 4.0]} />
+          <meshStandardMaterial color={PALETTE.slateDark} roughness={0.6} metalness={0.4} />
+        </mesh>
+        {/* Overhead Luminaire */}
+        <mesh position={[0, 4.2, 0]}>
+          <boxGeometry args={[3.0, 0.2, 4.0]} />
+          <meshStandardMaterial color={PALETTE.slateLight} metalness={0.7} roughness={0.3} />
+        </mesh>
+        <mesh position={[0, 4.05, 0]}>
+          <planeGeometry args={[2.8, 3.8]} />
+          <meshBasicMaterial color={PALETTE.glowWhite} />
+        </mesh>
+        <pointLight position={[0, 3.8, 0]} intensity={3.5} distance={8} color={PALETTE.white} />
+        {/* Inspected Garment Silhouette */}
+        <mesh position={[0, 1.45, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <planeGeometry args={[1.6, 2.0]} />
+          <meshStandardMaterial color={PALETTE.slateMedium} roughness={0.9} />
+        </mesh>
+      </group>
 
-      {/* Bright Overhead Luminaire (High inspection lighting) */}
-      <mesh position={[0, 4.2, 0]}>
-        <boxGeometry args={[3.8, 0.2, 4.8]} />
-        <meshStandardMaterial color={PALETTE.slateLight} metalness={0.7} roughness={0.3} />
-      </mesh>
-      <mesh position={[0, 4.05, 0]}>
-        <planeGeometry args={[3.6, 4.6]} />
-        <meshBasicMaterial color={PALETTE.glowWhite} />
-      </mesh>
-      <pointLight position={[0, 3.8, 0]} intensity={4.5} distance={9} color={PALETTE.white} />
-
-      {/* Inspected Garment Silhouette on Table */}
-      <mesh position={[0, 1.45, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[1.8, 2.2]} />
-        <meshStandardMaterial color={PALETTE.slateMedium} roughness={0.9} />
-      </mesh>
+      {/* Automated Packaging Conveyor */}
+      <group position={[2.8, 0, 0]}>
+        <mesh position={[0, 1.1, 0]}>
+          <boxGeometry args={[1.6, 0.2, 8]} />
+          <meshStandardMaterial color={PALETTE.slateDark} roughness={0.3} metalness={0.7} />
+        </mesh>
+        <mesh position={[-0.85, 1.3, 0]}>
+          <boxGeometry args={[0.08, 0.25, 8]} />
+          <meshStandardMaterial color={PALETTE.steel} metalness={0.8} roughness={0.2} />
+        </mesh>
+        <mesh position={[0.85, 1.3, 0]}>
+          <boxGeometry args={[0.08, 0.25, 8]} />
+          <meshStandardMaterial color={PALETTE.steel} metalness={0.8} roughness={0.2} />
+        </mesh>
+        {[-3, 0, 3].map((z, lIdx) => (
+          <group key={lIdx} position={[0, 0.55, z]}>
+            <mesh position={[-0.75, 0, 0]}>
+              <cylinderGeometry args={[0.05, 0.05, 1.1]} />
+              <meshStandardMaterial color={PALETTE.graphite} metalness={0.8} />
+            </mesh>
+            <mesh position={[0.75, 0, 0]}>
+              <cylinderGeometry args={[0.05, 0.05, 1.1]} />
+              <meshStandardMaterial color={PALETTE.graphite} metalness={0.8} />
+            </mesh>
+          </group>
+        ))}
+        {/* Moving Custom Brand Packaging Boxes */}
+        <group ref={boxGroupRef}>
+          {[-2.5, 0.5, 3.5].map((boxZ, bIdx) => (
+            <group key={bIdx} position={[0, 1.42, boxZ]}>
+              <mesh>
+                <boxGeometry args={[0.85, 0.42, 1.1]} />
+                <meshStandardMaterial color={PALETTE.deepSlate} roughness={0.4} metalness={0.4} />
+              </mesh>
+              <mesh position={[0, 0.22, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+                <planeGeometry args={[0.55, 0.7]} />
+                <meshStandardMaterial color={PALETTE.white} roughness={0.9} />
+              </mesh>
+            </group>
+          ))}
+        </group>
+      </group>
 
       {/* 4-Tier Interactive Quality Checkpoint Signboards */}
       <group position={[0, 2.8, 3.2]}>
         {checkItems.map((item, idx) => (
-          <group key={idx} position={[(idx - 1.5) * 1.6, 0, 0]}>
+          <group key={idx} position={[(idx - 1.5) * 1.8, 0, 0]}>
             <mesh>
-              <boxGeometry args={[1.35, 0.55, 0.08]} />
+              <boxGeometry args={[1.55, 0.55, 0.08]} />
               <meshStandardMaterial
                 color={PALETTE.deepSlate}
                 roughness={0.3}
@@ -538,11 +485,11 @@ export function QualityControlZone() {
             </mesh>
             <Text
               position={[0, 0, 0.06]}
-              fontSize={0.16}
+              fontSize={0.14}
               color={PALETTE.glowWhite}
               anchorX="center"
               anchorY="middle"
-              letterSpacing={0.15}
+              letterSpacing={0.12}
             >
               {`✓ ${item}`}
             </Text>
@@ -550,6 +497,7 @@ export function QualityControlZone() {
         ))}
       </group>
 
+      {/* Overhead Zone Banner */}
       <Text
         position={[0, 6.8, 0]}
         fontSize={0.28}
@@ -558,238 +506,13 @@ export function QualityControlZone() {
         anchorY="middle"
         letterSpacing={0.2}
       >
-        04 // 4-TIER RIGOROUS QUALITY CONTROL
+        03 // QUALITY CONTROL & BRAND PACKAGING
       </Text>
     </group>
   );
 }
 
-// 6. ZONE 05: FINISHING (Z: -155 to -175)
-export function FinishingZone() {
-  return (
-    <group position={[0, 0, -165]}>
-      {/* Industrial Steam Vacuum Tables */}
-      {[-2.4, 2.4].map((x, idx) => (
-        <group key={idx} position={[x, 0, 0]}>
-          {/* Ironing Surface */}
-          <mesh position={[0, 1.25, 0]}>
-            <boxGeometry args={[1.4, 0.15, 3.2]} />
-            <meshStandardMaterial color={PALETTE.slateMedium} roughness={0.4} metalness={0.6} />
-          </mesh>
-          {/* Base & Steam Generator Boiler */}
-          <mesh position={[0, 0.6, 0]}>
-            <boxGeometry args={[1.2, 1.1, 2.8]} />
-            <meshStandardMaterial color={PALETTE.slateDark} metalness={0.7} roughness={0.3} />
-          </mesh>
-          {/* Overhead Steam Iron Spring Suspender */}
-          <mesh position={[0, 2.2, 0]}>
-            <cylinderGeometry args={[0.02, 0.02, 1.8]} />
-            <meshStandardMaterial color={PALETTE.steel} />
-          </mesh>
-          {/* Heavy Steam Iron Head */}
-          <mesh position={[0, 1.4, 0]}>
-            <boxGeometry args={[0.22, 0.14, 0.4]} />
-            <meshStandardMaterial color={PALETTE.silver} metalness={0.9} roughness={0.1} />
-          </mesh>
-        </group>
-      ))}
-
-      {/* Finished Garment Rolling Rack with Folded & Hanging Apparel */}
-      <group position={[0, 0, 0]}>
-        {/* Chrome Rolling Rack Rail */}
-        <mesh position={[0, 2.0, 0]}>
-          <boxGeometry args={[0.06, 0.06, 4.8]} />
-          <meshStandardMaterial color={PALETTE.silver} metalness={0.95} roughness={0.1} />
-        </mesh>
-        {/* End Support Posts */}
-        <mesh position={[0, 1.0, -2.4]}>
-          <cylinderGeometry args={[0.03, 0.03, 2.0]} />
-          <meshStandardMaterial color={PALETTE.silver} metalness={0.95} roughness={0.1} />
-        </mesh>
-        <mesh position={[0, 1.0, 2.4]}>
-          <cylinderGeometry args={[0.03, 0.03, 2.0]} />
-          <meshStandardMaterial color={PALETTE.silver} metalness={0.95} roughness={0.1} />
-        </mesh>
-
-        {/* Array of Hanging Hoodies / Shirts (Monochromatic) */}
-        {[-2.0, -1.5, -1.0, -0.5, 0, 0.5, 1.0, 1.5, 2.0].map((z, hIdx) => (
-          <mesh key={hIdx} position={[0, 1.3, z]}>
-            <boxGeometry args={[0.7, 1.2, 0.14]} />
-            <meshStandardMaterial
-              color={hIdx % 2 === 0 ? PALETTE.black : PALETTE.slateMedium}
-              roughness={0.8}
-            />
-          </mesh>
-        ))}
-      </group>
-
-      <Text
-        position={[0, 6.8, 0]}
-        fontSize={0.28}
-        color={PALETTE.white}
-        anchorX="center"
-        anchorY="middle"
-        letterSpacing={0.2}
-      >
-        05 // STEAM FINISHING & BRAND LABELS
-      </Text>
-    </group>
-  );
-}
-
-// 7. ZONE 06: PACKAGING (Z: -180 to -205)
-export function PackagingZone() {
-  const boxGroupRef = useRef<THREE.Group>(null);
-
-  useFrame((state) => {
-    if (boxGroupRef.current) {
-      // Subtle conveyor translation
-      const t = (state.clock.elapsedTime * 0.8) % 3.0;
-      boxGroupRef.current.position.z = -t;
-    }
-  });
-
-  return (
-    <group position={[0, 0, -192]}>
-      {/* Central Industrial Conveyor Assembly */}
-      <group position={[0, 0, 0]}>
-        {/* Conveyor Bed */}
-        <mesh position={[0, 1.1, 0]}>
-          <boxGeometry args={[1.8, 0.2, 12]} />
-          <meshStandardMaterial color={PALETTE.slateDark} roughness={0.3} metalness={0.7} />
-        </mesh>
-        {/* Conveyor Side Rails */}
-        <mesh position={[-0.95, 1.3, 0]}>
-          <boxGeometry args={[0.08, 0.25, 12]} />
-          <meshStandardMaterial color={PALETTE.steel} metalness={0.8} roughness={0.2} />
-        </mesh>
-        <mesh position={[0.95, 1.3, 0]}>
-          <boxGeometry args={[0.08, 0.25, 12]} />
-          <meshStandardMaterial color={PALETTE.steel} metalness={0.8} roughness={0.2} />
-        </mesh>
-
-        {/* Steel Support Legs */}
-        {[-5, -2, 1, 4].map((z, lIdx) => (
-          <group key={lIdx} position={[0, 0.55, z]}>
-            <mesh position={[-0.85, 0, 0]}>
-              <cylinderGeometry args={[0.05, 0.05, 1.1]} />
-              <meshStandardMaterial color={PALETTE.graphite} metalness={0.8} />
-            </mesh>
-            <mesh position={[0.85, 0, 0]}>
-              <cylinderGeometry args={[0.05, 0.05, 1.1]} />
-              <meshStandardMaterial color={PALETTE.graphite} metalness={0.8} />
-            </mesh>
-          </group>
-        ))}
-
-        {/* Conveyor Moving Custom Brand Boxes */}
-        <group ref={boxGroupRef}>
-          {[-4, -1, 2, 5].map((boxZ, bIdx) => (
-            <group key={bIdx} position={[0, 1.42, boxZ]}>
-              <mesh>
-                <boxGeometry args={[0.95, 0.45, 1.2]} />
-                <meshStandardMaterial color={PALETTE.deepSlate} roughness={0.4} metalness={0.4} />
-              </mesh>
-              {/* Monochromatic Brand Label on Box */}
-              <mesh position={[0, 0.23, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry args={[0.6, 0.8]} />
-                <meshStandardMaterial color={PALETTE.white} roughness={0.9} />
-              </mesh>
-            </group>
-          ))}
-        </group>
-      </group>
-
-      <Text
-        position={[0, 6.8, 0]}
-        fontSize={0.28}
-        color={PALETTE.white}
-        anchorX="center"
-        anchorY="middle"
-        letterSpacing={0.2}
-      >
-        06 // AUTOMATED FOLDING & CUSTOM PACKAGING
-      </Text>
-    </group>
-  );
-}
-
-// 8. ZONE 07: DISPATCH & LOGISTICS (Z: -210 to -235)
-export function DispatchZone() {
-  return (
-    <group position={[0, 0, -222]}>
-      {/* High-Bay Heavy Cargo Pallet Racks (Left & Right) */}
-      {[-4.8, 4.8].map((rackX, rIdx) => (
-        <group key={rIdx} position={[rackX, 0, 0]}>
-          {/* Heavy Uprights */}
-          {[-4.5, 0, 4.5].map((z, uIdx) => (
-            <mesh key={uIdx} position={[0, 4.2, z]}>
-              <boxGeometry args={[0.3, 8.4, 0.3]} />
-              <meshStandardMaterial color={PALETTE.graphite} metalness={0.8} roughness={0.2} />
-            </mesh>
-          ))}
-
-          {/* Stored Palletized Master Cartons */}
-          {[1.2, 3.6, 6.0].map((levelY, levIdx) => (
-            <group key={levIdx} position={[0, levelY, 0]}>
-              <mesh position={[0, -0.1, 0]}>
-                <boxGeometry args={[1.6, 0.15, 10]} />
-                <meshStandardMaterial color={PALETTE.steel} metalness={0.7} />
-              </mesh>
-              {[-3.5, -1.2, 1.2, 3.5].map((cartonZ, cIdx) => (
-                <mesh key={cIdx} position={[0, 0.7, cartonZ]}>
-                  <boxGeometry args={[1.3, 1.2, 1.8]} />
-                  <meshStandardMaterial color={PALETTE.slateDark} roughness={0.7} metalness={0.3} />
-                </mesh>
-              ))}
-            </group>
-          ))}
-        </group>
-      ))}
-
-      {/* Industrial Dispatch Bay Exit Sign */}
-      <group position={[0, 4.8, 6]}>
-        <mesh>
-          <boxGeometry args={[6.5, 1.4, 0.2]} />
-          <meshStandardMaterial color={PALETTE.deepSlate} metalness={0.8} roughness={0.2} />
-        </mesh>
-        <Text
-          position={[0, 0.25, 0.12]}
-          fontSize={0.45}
-          color={PALETTE.glowWhite}
-          anchorX="center"
-          anchorY="middle"
-          letterSpacing={0.12}
-        >
-          INDIA + INTERNATIONAL MARKETS
-        </Text>
-        <Text
-          position={[0, -0.3, 0.12]}
-          fontSize={0.18}
-          color={PALETTE.silver}
-          anchorX="center"
-          anchorY="middle"
-          letterSpacing={0.22}
-        >
-          GLOBAL EXPORT FREIGHT LOGISTICS
-        </Text>
-      </group>
-
-      <Text
-        position={[0, 6.8, 0]}
-        fontSize={0.28}
-        color={PALETTE.white}
-        anchorX="center"
-        anchorY="middle"
-        letterSpacing={0.2}
-      >
-        07 // EXPORT DISPATCH LOGISTICS
-      </Text>
-    </group>
-  );
-}
-
-// 9. THE TRANSITION PORTAL & LUXURY SHOWROOM (Z: -240 to -300)
+// 4. THE TRANSITION PORTAL & LUXURY SHOWROOM (Z: -130 to -165)
 export function LuxuryShowroomZone() {
   const showroomPedestalRef = useRef<THREE.Group>(null);
 
@@ -800,9 +523,9 @@ export function LuxuryShowroomZone() {
   });
 
   return (
-    <group position={[0, 0, -270]}>
+    <group position={[0, 0, -150]}>
       {/* Architectural Threshold Portal between Factory & Showroom */}
-      <group position={[0, 0, 28]}>
+      <group position={[0, 0, 18]}>
         <mesh position={[-4.5, 4.5, 0]}>
           <boxGeometry args={[2, 9, 2]} />
           <meshStandardMaterial color={PALETTE.black} roughness={0.2} metalness={0.8} />
@@ -824,7 +547,7 @@ export function LuxuryShowroomZone() {
 
       {/* Luxury Showroom Architecture: Obsidian Flooring & Dark Minimalist Concrete */}
       <mesh position={[0, 0.05, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[22, 50]} />
+        <planeGeometry args={[22, 40]} />
         <meshStandardMaterial
           color={PALETTE.black}
           roughness={0.08}
@@ -833,9 +556,8 @@ export function LuxuryShowroomZone() {
       </mesh>
 
       {/* Dramatic Downward Pin-Spotlights on Runway */}
-      <pointLight position={[0, 7.5, 10]} intensity={3.5} distance={14} color={PALETTE.white} />
-      <pointLight position={[0, 7.5, -5]} intensity={3.5} distance={14} color={PALETTE.white} />
-      <pointLight position={[0, 7.5, -20]} intensity={3.5} distance={14} color={PALETTE.white} />
+      <pointLight position={[0, 7.5, 6]} intensity={3.5} distance={14} color={PALETTE.white} />
+      <pointLight position={[0, 7.5, -4]} intensity={3.5} distance={14} color={PALETTE.white} />
 
       {/* Central Rotating Pedestal for Master Showcase Garment */}
       <group position={[0, 0, 0]}>
@@ -875,7 +597,7 @@ export function LuxuryShowroomZone() {
       </group>
 
       {/* Showroom Wall Typographic Statement */}
-      <group position={[0, 5.5, -24]}>
+      <group position={[0, 5.5, -16]}>
         <Text
           position={[0, 0.6, 0]}
           fontSize={0.85}

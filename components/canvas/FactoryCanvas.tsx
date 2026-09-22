@@ -8,12 +8,8 @@ import { FactoryCeilingAndFloor } from './FactoryCeilingAndFloor';
 import {
   EntranceZone,
   RawMaterialZone,
-  CuttingZone,
   StitchingZone,
-  QualityControlZone,
-  FinishingZone,
-  PackagingZone,
-  DispatchZone,
+  QualityAndPackagingZone,
   LuxuryShowroomZone,
 } from './FactoryZones';
 
@@ -68,12 +64,8 @@ export default function FactoryCanvas({ scrollProgress }: FactoryCanvasProps) {
           <FactoryCeilingAndFloor />
           <EntranceZone scrollProgress={scrollProgress} />
           <RawMaterialZone />
-          <CuttingZone />
           <StitchingZone />
-          <QualityControlZone />
-          <FinishingZone />
-          <PackagingZone />
-          <DispatchZone />
+          <QualityAndPackagingZone />
           <LuxuryShowroomZone />
         </Suspense>
       </Canvas>

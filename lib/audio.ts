@@ -172,12 +172,12 @@ class FactorySoundEngine {
     this.showroomGain.connect(this.masterGain);
   }
 
-  // Update acoustics based on user journey (0: Entrance, 1-7: Factory floor, 8+: Luxury Showroom)
+  // Update acoustics based on user journey (0-2: Factory floor, 3+: Luxury Showroom)
   public updateStage(stageIndex: number) {
     if (!this.ctx || !this.isInitialized) return;
     const now = this.ctx.currentTime;
 
-    if (stageIndex >= 8) {
+    if (stageIndex >= 3) {
       // Inside Luxury Showroom: Fade out heavy industrial rumble, fade in pristine showroom ambiance
       if (this.droneGain) this.droneGain.gain.setTargetAtTime(0.02, now, 1.2);
       if (this.mechanicalGain) this.mechanicalGain.gain.setTargetAtTime(0.005, now, 1.0);

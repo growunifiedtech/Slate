@@ -16,38 +16,18 @@ export interface FactoryStage {
 
 export const FACTORY_STAGES: FactoryStage[] = [
   {
-    id: 'entrance',
-    stepNumber: 'STAGE 01',
-    title: 'ENTER SLATE',
-    headline: 'WELCOME TO SLATE',
-    subheading: 'WHERE IDEAS BECOME APPAREL.',
-    description: 'Enter our high-precision apparel manufacturing facility in New Delhi. Every piece is engineered from thread to finished silhouette.',
-    zoneCode: 'ZONE 00 // EXTERIOR ENTRANCE',
-    scrollProgress: [0.0, 0.12]
-  },
-  {
     id: 'raw-material',
     stepNumber: '01 / RAW MATERIAL',
     title: 'RAW MATERIAL',
     headline: 'IT STARTS WITH THE FABRIC.',
     subheading: 'UNCOMPROMISING TEXTILE INTEGRITY',
-    description: 'Quality-focused apparel production begins with the right materials and specifications. Tested for shrinkage, color-fastness, and GSM density.',
+    description: 'Quality-focused apparel production begins with the right materials, yarn density, and shrinkage specifications. Curated knits, terry, and technical fleece.',
     zoneCode: 'ZONE 01 // TEXTILE STORAGE',
-    scrollProgress: [0.12, 0.24]
-  },
-  {
-    id: 'cutting',
-    stepNumber: '02 / CUTTING',
-    title: 'CUTTING',
-    headline: 'PRECISION BEFORE PRODUCTION.',
-    subheading: 'CAD-ALIGNED AUTOMATED FABRIC CUTTING',
-    description: 'Fabric is prepared and cut according to product specifications for consistent production across thousands of units.',
-    zoneCode: 'ZONE 02 // CAD PATTERN & LASER CUT',
-    scrollProgress: [0.24, 0.36]
+    scrollProgress: [0.0, 0.35]
   },
   {
     id: 'stitching',
-    stepNumber: '03 / STITCHING',
+    stepNumber: '02 / STITCHING',
     title: 'STITCHING',
     headline: 'BUILT WITH PRECISION.',
     subheading: 'HIGH-TENSILE SEWING & ASSEMBLY',
@@ -56,49 +36,19 @@ export const FACTORY_STAGES: FactoryStage[] = [
       value: '50,000',
       label: 'PIECES / MONTH'
     },
-    zoneCode: 'ZONE 03 // ASSEMBLY LINE',
-    scrollProgress: [0.36, 0.48]
+    zoneCode: 'ZONE 02 // ASSEMBLY LINE',
+    scrollProgress: [0.35, 0.70]
   },
   {
-    id: 'quality-control',
-    stepNumber: '04 / QUALITY CONTROL',
-    title: 'QUALITY CONTROL',
-    headline: 'QUALITY IS NOT AN AFTERTHOUGHT.',
-    subheading: '4-TIER RIGOROUS QUALITY AUDIT',
-    description: 'Every production process is supported by quality-focused inspection before products move forward.',
-    checkpoints: ['FABRIC', 'STITCHING', 'FINISHING', 'FINAL CHECK'],
-    zoneCode: 'ZONE 04 // INSPECTION STATION',
-    scrollProgress: [0.48, 0.60]
-  },
-  {
-    id: 'finishing',
-    stepNumber: '05 / FINISHING',
-    title: 'FINISHING',
-    headline: 'THE DETAILS MATTER.',
-    subheading: 'STEAM PRESSING, TRIMMING & LABELS',
-    description: 'Garment finishing, folding, label placement and final preparation crafted to client brand standards.',
-    zoneCode: 'ZONE 05 // STEAM & LABELS',
-    scrollProgress: [0.60, 0.72]
-  },
-  {
-    id: 'packaging',
-    stepNumber: '06 / PACKAGING',
-    title: 'PACKAGING',
+    id: 'quality-packaging',
+    stepNumber: '03 / QUALITY & PACKAGING',
+    title: 'QUALITY & PACKAGING',
     headline: 'READY FOR YOUR BRAND.',
-    subheading: 'CUSTOM PRIVATE-LABEL BRAND PACKAGING',
-    description: 'Brand packaging customization and private-label solutions available for retail-ready shelf appeal.',
-    zoneCode: 'ZONE 06 // FOLDING & BOXING',
-    scrollProgress: [0.72, 0.84]
-  },
-  {
-    id: 'dispatch',
-    stepNumber: '07 / DISPATCH',
-    title: 'DISPATCH',
-    headline: 'INDIA + INTERNATIONAL MARKETS',
-    subheading: 'LOGISTICS & SECURE BULK FREIGHT',
-    description: 'Manufacturing solutions for businesses across India and abroad with export-grade packaging and documentation.',
-    zoneCode: 'ZONE 07 // LOGISTICS HUB',
-    scrollProgress: [0.84, 0.96]
+    subheading: '4-TIER RIGOROUS QUALITY AUDIT & PACKAGING',
+    description: 'Every production run passes 4-tier inspection before custom private-label folding, tagging, and packing for India & international dispatch.',
+    checkpoints: ['FABRIC AUDIT', 'STITCH INTEGRITY', 'FINISHING & LABELS', 'FINAL DISPATCH CHECK'],
+    zoneCode: 'ZONE 03 // QC & PACKAGING',
+    scrollProgress: [0.70, 0.98]
   }
 ];
 

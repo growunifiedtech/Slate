@@ -13,18 +13,13 @@ export default function CameraHUD({ scrollProgress, activeStageIndex }: CameraHU
 
   // Active tour stage label
   const tourStages = [
-    'ENTRANCE',
     'RAW MATERIAL',
-    'CUTTING',
-    'STITCHING',
-    'QUALITY',
-    'FINISHING',
-    'PACKAGING',
-    'DISPATCH',
+    'STITCHING (50K PCS)',
+    'QUALITY & PACKAGING',
   ];
 
   // Camera depth coordinates calculation
-  const depthZ = Math.round((14 - scrollProgress * 274) * 10) / 10;
+  const depthZ = Math.round((14 - scrollProgress * 164) * 10) / 10;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-20 flex flex-col justify-between p-4 sm:p-8 select-none">
@@ -34,7 +29,7 @@ export default function CameraHUD({ scrollProgress, activeStageIndex }: CameraHU
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
             <span className="text-[10px] font-mono tracking-widest text-slate-300 uppercase">
-              LIVE TOUR // {currentStage?.zoneCode || 'ZONE 00'}
+              LIVE TOUR // {currentStage?.zoneCode || 'ZONE 01'}
             </span>
           </div>
           <div className="hidden sm:flex items-center gap-3 text-[9px] font-mono text-slate-500 tracking-wider">
@@ -49,8 +44,8 @@ export default function CameraHUD({ scrollProgress, activeStageIndex }: CameraHU
         {/* Top Right Stage Numeric Indicator */}
         <div className="flex flex-col items-end">
           <span className="text-xl sm:text-2xl font-bold font-mono text-white tracking-widest">
-            {String(Math.min(activeStageIndex + 1, 8)).padStart(2, '0')}{' '}
-            <span className="text-xs text-slate-600">/ 08</span>
+            {String(Math.min(activeStageIndex + 1, 3)).padStart(2, '0')}{' '}
+            <span className="text-xs text-slate-600">/ 03</span>
           </span>
           <span className="text-[9px] font-mono tracking-widest text-slate-400 uppercase">
             {tourStages[Math.min(activeStageIndex, tourStages.length - 1)]}
