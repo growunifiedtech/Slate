@@ -10,7 +10,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative z-20 bg-[#030406] text-[#f8fafc] border-t border-white/10 pt-20 pb-12 px-5 sm:px-8">
+    <footer id="contact" className="relative z-20 bg-[#030406] text-[#f8fafc] border-t border-white/10 pt-20 pb-12 px-5 sm:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           {/* Brand Col (5 cols) */}
@@ -70,7 +70,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#contact" className="hover:text-white transition-colors">
-                  REQUEST BULK QUOTE
+                  CONTACT ON WHATSAPP
                 </a>
               </li>
             </ul>
@@ -79,25 +79,36 @@ export default function Footer() {
           {/* Facility Coordinates & Contact (4 cols) */}
           <div className="md:col-span-4 space-y-3 font-mono text-xs">
             <span className="text-[10px] text-slate-500 uppercase tracking-widest block mb-4">
-              NEW DELHI FACILITY
+              NEW DELHI FACILITY & CONTACT
             </span>
             <p className="text-slate-300 leading-relaxed">
               {BRAND_INFO.address}
             </p>
-            <div className="pt-2 space-y-1 text-slate-300">
+            <div className="pt-2 space-y-2 text-slate-300">
               <div>
-                WHATSAPP:{' '}
+                <span className="text-slate-500 block text-[10px]">PRIMARY WHATSAPP:</span>
                 <a
                   href={BRAND_INFO.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:underline"
+                  className="text-white hover:underline font-semibold"
                 >
-                  {BRAND_INFO.phoneDisplay}
+                  {BRAND_INFO.phone1} (Direct Order Desk)
                 </a>
               </div>
               <div>
-                EMAIL:{' '}
+                <span className="text-slate-500 block text-[10px]">SECONDARY WHATSAPP:</span>
+                <a
+                  href={BRAND_INFO.whatsappUrl2}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:underline font-semibold"
+                >
+                  {BRAND_INFO.phone2} (Direct Support Desk)
+                </a>
+              </div>
+              <div className="pt-1">
+                <span className="text-slate-500 block text-[10px]">OFFICIAL EMAIL:</span>
                 <a href={`mailto:${BRAND_INFO.email}`} className="text-white hover:underline">
                   {BRAND_INFO.email}
                 </a>

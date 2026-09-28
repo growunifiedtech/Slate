@@ -15,7 +15,6 @@ import BulkOrderJourney from '@/components/ui/BulkOrderJourney';
 import CapacitySection from '@/components/ui/CapacitySection';
 import FactoryPhotoGallery from '@/components/ui/FactoryPhotoGallery';
 import CredentialsSection from '@/components/ui/CredentialsSection';
-import BulkInquiryForm from '@/components/ui/BulkInquiryForm';
 import Footer from '@/components/ui/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import CustomCursor from '@/components/ui/CustomCursor';
@@ -33,7 +32,6 @@ export default function HomePage() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeStageIndex, setActiveStageIndex] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [quoteProduct, setQuoteProduct] = useState<Product | null>(null);
 
   const factoryTrackRef = useRef<HTMLDivElement>(null);
 
@@ -75,11 +73,10 @@ export default function HomePage() {
   };
 
   const handleRequestQuote = (product?: Product) => {
-    if (product) setQuoteProduct(product);
-    const formElement = document.getElementById('inquiry-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    const text = product
+      ? `Hello Slate Apparels, I am interested in placing a bulk apparel order for ${product.name}. Please share MOQ, pricing, and catalog details.`
+      : `Hello Slate Apparels, I am interested in placing a bulk apparel order. I would like to discuss products, MOQ and pricing.`;
+    window.open(`https://wa.me/919599084873?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   };
 
   const handleOpenCustomizer = (_product: Product) => {
@@ -161,8 +158,41 @@ export default function HomePage() {
       {/* 15. Trust & Credibility (GST, IEC, UDYAM) */}
       <CredentialsSection />
 
-      {/* 16. B2B Bulk Inquiry Form */}
-      <BulkInquiryForm preselectedProduct={quoteProduct} />
+      {/* 16. Direct WhatsApp Bulk Order Desk (Replaces Static Contact Form) */}
+      <section id="contact" className="relative z-20 py-20 px-5 sm:px-8 border-t border-white/10 bg-[#06080c]">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-widest text-slate-300 uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            DIRECT B2B MANUFACTURING DESK
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white uppercase font-display mb-4">
+            START YOUR BULK ORDER DIRECTLY ON WHATSAPP
+          </h2>
+          <p className="text-slate-400 text-sm sm:text-base max-w-xl font-light mb-8">
+            Connect directly with our production specialists in New Delhi. Get immediate quotations, discuss fabric swatches, tech packs, and MOQ timelines.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            <a
+              href="https://wa.me/919599084873?text=Hello%20Slate%20Apparels%2C%20I%20am%20interested%20in%20placing%20a%20bulk%20apparel%20order.%20I%20would%20like%20to%20discuss%20products%2C%20MOQ%20and%20pricing."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-8 py-4 border border-white bg-white text-black hover:bg-slate-200 font-mono text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2.5 transition-all shadow-2xl"
+            >
+              <span>CHAT ON WHATSAPP (+91 9599084873)</span>
+              <span className="text-[9px] px-1.5 py-0.5 bg-black text-white rounded font-mono">PRIMARY</span>
+            </a>
+            <a
+              href="https://wa.me/919758807721?text=Hello%20Slate%20Apparels%2C%20I%20am%20interested%20in%20placing%20a%20bulk%20apparel%20order.%20I%20would%20like%20to%20discuss%20products%2C%20MOQ%20and%20pricing."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-8 py-4 border border-white/20 bg-white/5 hover:bg-white/10 text-white font-mono text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2.5 transition-all"
+            >
+              <span>ALTERNATE WHATSAPP (+91 9758807721)</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* 17. Monochromatic Footer */}
       <Footer />

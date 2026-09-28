@@ -616,7 +616,7 @@ export function LuxuryShowroomZone() {
           anchorY="middle"
           letterSpacing={0.25}
         >
-          WINTERS • SUMMERS • TOP WEAR • BOTTOM WEAR
+          HOODIES • JACKETS • T-SHIRTS • TRACKSUITS • KNITWEAR
         </Text>
       </group>
     </group>

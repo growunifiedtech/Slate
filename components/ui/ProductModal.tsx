@@ -195,7 +195,8 @@ export default function ProductModal({
               }}
               className="w-full py-3 border border-white bg-white text-black hover:bg-slate-200 font-mono text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 transition-all"
             >
-              <span>REQUEST BULK QUOTE</span>
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>REQUEST BULK QUOTE (WHATSAPP)</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
 

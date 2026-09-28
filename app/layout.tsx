@@ -86,7 +86,7 @@ export default function RootLayout({
       "postalCode": "110025",
       "addressCountry": "IN"
     },
-    "telephone": "+91-9599084873",
+    "telephone": ["+91-9599084873", "+91-9758807721"],
     "email": "slateapparels@gmail.com",
     "url": "https://slateapparels.com",
     "makesOffer": [
