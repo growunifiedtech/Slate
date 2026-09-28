@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  category: 'HOODIES' | 'JACKETS' | 'T-SHIRTS & POLOS' | 'TRACKSUITS & TRACKPANTS' | 'KNITWEAR & BEANIES';
+  category: 'HOODIES' | 'JACKETS' | 'T-SHIRTS' | 'POLOS' | 'TRACKSUITS' | 'TRACKPANTS' | 'SWEATERS' | 'BEANIES';
   subcategory: string;
   season: 'Winter' | 'Summer' | 'All Season';
   description: string;
@@ -21,11 +21,11 @@ export interface Product {
 }
 
 export const PRODUCTS: Product[] = [
-  // 1. T-SHIRTS & POLOS
+  // 1. T-SHIRTS
   {
     id: 'oversized-t-shirt-drop-shoulder',
     name: 'Oversized T-Shirt (Drop Shoulder)',
-    category: 'T-SHIRTS & POLOS',
+    category: 'T-SHIRTS',
     subcategory: 'T-Shirts',
     season: 'All Season',
     description: 'Heavy-density combed cotton with an exaggerated drop-shoulder drape, wide ribbed collar, and relaxed streetwear fit engineered for high-end brand labeling.',
@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'biowash-t-shirt',
     name: 'Biowash T-Shirt',
-    category: 'T-SHIRTS & POLOS',
+    category: 'T-SHIRTS',
     subcategory: 'T-Shirts',
     season: 'Summer',
     description: 'Ultra-soft enzymatic biowash fabric eliminates surface fuzz for an ultra-smooth hand-feel and vibrant color retention across commercial wash cycles.',
@@ -70,10 +70,12 @@ export const PRODUCTS: Product[] = [
       customization: ['Water-Based Discharge Print', 'Plastisol Screen Print', 'Satin Brand Tag']
     }
   },
+
+  // 2. POLOS
   {
     id: 'polo-tshirt',
     name: 'Polo Tshirt',
-    category: 'T-SHIRTS & POLOS',
+    category: 'POLOS',
     subcategory: 'Polos',
     season: 'All Season',
     description: 'Refined pique polo crafted with durable flat-knit ribbed collar and cuffs, reinforced two-button placket, and side-slit vents for corporate and premium retail brands.',
@@ -96,7 +98,7 @@ export const PRODUCTS: Product[] = [
     }
   },
 
-  // 2. HOODIES
+  // 3. HOODIES
   {
     id: 'hoodies-regular-fit',
     name: 'Hoodies (Regular Fit)',
@@ -194,7 +196,7 @@ export const PRODUCTS: Product[] = [
     }
   },
 
-  // 3. JACKETS
+  // 4. JACKETS
   {
     id: 'varsity-jackets',
     name: 'Varsity Jackets',
@@ -295,11 +297,11 @@ export const PRODUCTS: Product[] = [
     }
   },
 
-  // 4. TRACKSUITS & TRACKPANTS
+  // 5. TRACKSUITS
   {
     id: 'fleece-tracksuits',
     name: 'Fleece Tracksuits',
-    category: 'TRACKSUITS & TRACKPANTS',
+    category: 'TRACKSUITS',
     subcategory: 'Tracksuits',
     season: 'Winter',
     description: 'Complete 2-piece fleece co-ord set featuring a pullover hoodie paired with tapered elastic-cuff joggers with deep welt pockets.',
@@ -323,7 +325,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'omniheat-tracksuits',
     name: 'Omniheat Tracksuits',
-    category: 'TRACKSUITS & TRACKPANTS',
+    category: 'TRACKSUITS',
     subcategory: 'Tracksuits',
     season: 'Winter',
     description: 'High-performance winter sportswear engineered with silver thermal-reflective interior lining to retain body heat in freezing conditions.',
@@ -344,10 +346,12 @@ export const PRODUCTS: Product[] = [
       customization: ['Reflective 3M Branding', 'Waterproof Heat-Sealed Zips', 'Custom Branded Pullers']
     }
   },
+
+  // 6. TRACKPANTS
   {
     id: 'balloon-fit-trackpants',
     name: 'Balloon Fit Trackpants',
-    category: 'TRACKSUITS & TRACKPANTS',
+    category: 'TRACKPANTS',
     subcategory: 'Trackpants',
     season: 'All Season',
     description: 'Voluminous curved outer seam tailored into a structured balloon silhouette, tapering gracefully at the ankle with deep slash pockets and thick drawcord waistband.',
@@ -370,7 +374,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'trackpants-regular-fit',
     name: 'Trackpants (Regular Fit)',
-    category: 'TRACKSUITS & TRACKPANTS',
+    category: 'TRACKPANTS',
     subcategory: 'Trackpants',
     season: 'All Season',
     description: 'Straight-leg regular fit track pants with interior brushed comfort, durable elasticated waistband with eyelets, and zippered side pockets.',
@@ -394,7 +398,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'fleece-trackpants-jogger-fit',
     name: 'Fleece Trackpants (Jogger Fit)',
-    category: 'TRACKSUITS & TRACKPANTS',
+    category: 'TRACKPANTS',
     subcategory: 'Trackpants',
     season: 'Winter',
     description: 'Tapered streetwear jogger cut with 2x2 ribbed ankle cuffs, heavy flat drawcords, reinforced seat stitching, and deep slant pockets.',
@@ -416,11 +420,11 @@ export const PRODUCTS: Product[] = [
     }
   },
 
-  // 5. KNITWEAR & BEANIES
+  // 7. SWEATERS
   {
     id: 'sweaters',
     name: 'Sweaters',
-    category: 'KNITWEAR & BEANIES',
+    category: 'SWEATERS',
     subcategory: 'Knitwear',
     season: 'Winter',
     description: 'Artisanal checkerboard knit crewneck sweater with ribbed collar, hem, and cuffs. Superior elasticity, soft drape, and zero irritation against skin.',
@@ -441,10 +445,12 @@ export const PRODUCTS: Product[] = [
       customization: ['Jacquard Knit Intarsia Pattern', 'Subtle Leather Hem Tag', 'Custom Brand Packaging']
     }
   },
+
+  // 8. BEANIES
   {
     id: 'beanies',
     name: 'Beanies',
-    category: 'KNITWEAR & BEANIES',
+    category: 'BEANIES',
     subcategory: 'Headwear',
     season: 'Winter',
     description: 'Double-cuffed and skull-cap ribbed and buffalo fleece beanies engineered with four-point crown closure and ultra-soft thermal stretch retention.',
@@ -472,9 +478,12 @@ export const CATEGORIES = [
   'ALL',
   'HOODIES',
   'JACKETS',
-  'T-SHIRTS & POLOS',
-  'TRACKSUITS & TRACKPANTS',
-  'KNITWEAR & BEANIES',
+  'T-SHIRTS',
+  'POLOS',
+  'TRACKSUITS',
+  'TRACKPANTS',
+  'SWEATERS',
+  'BEANIES',
 ] as const;
 
 export type CategoryFilter = typeof CATEGORIES[number];

@@ -21,6 +21,11 @@ export default function ShowroomSection({
     return item.category === activeCategory;
   });
 
+  const getCategoryCount = (cat: CategoryFilter) => {
+    if (cat === 'ALL') return PRODUCTS.length;
+    return PRODUCTS.filter((item) => item.category === cat).length;
+  };
+
   return (
     <section id="showroom" className="relative z-20 bg-[#050507] text-[#f8fafc] py-24 sm:py-32 px-5 sm:px-8 border-t border-white/10">
       <div className="max-w-7xl mx-auto">
@@ -29,7 +34,7 @@ export default function ShowroomSection({
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-widest text-slate-400">
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-              CURATED PRODUCTION CATALOG
+              CURATED PRODUCTION CATALOG // 18 STYLES • 8 CATEGORIES
             </div>
             <h2 className="text-3xl sm:text-6xl font-bold tracking-tight text-white uppercase font-display">
               NOW, LET&apos;S TALK PRODUCT.
@@ -53,21 +58,31 @@ export default function ShowroomSection({
           </div>
         </div>
 
-        {/* Category Filter Tabs */}
+        {/* Category Filter Tabs with Item Counts */}
         <div className="flex flex-wrap gap-2 mb-12">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2.5 text-xs font-mono tracking-widest uppercase transition-all duration-200 border ${
-                activeCategory === cat
-                  ? 'border-white bg-white text-black font-semibold'
-                  : 'border-white/10 bg-white/[0.02] text-slate-400 hover:text-white hover:border-white/30'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          {CATEGORIES.map((cat) => {
+            const count = getCategoryCount(cat);
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-2 text-xs font-mono tracking-widest uppercase transition-all duration-200 border flex items-center gap-2 ${
+                  activeCategory === cat
+                    ? 'border-white bg-white text-black font-semibold shadow-lg'
+                    : 'border-white/10 bg-white/[0.02] text-slate-400 hover:text-white hover:border-white/30'
+                }`}
+              >
+                <span>{cat}</span>
+                <span
+                  className={`text-[9px] px-1.5 py-0.5 rounded font-mono ${
+                    activeCategory === cat ? 'bg-black text-white' : 'bg-white/10 text-slate-400'
+                  }`}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Products Grid */}
