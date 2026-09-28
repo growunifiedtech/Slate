@@ -104,7 +104,7 @@ export default function ShowroomSection({
                   unoptimized
                   priority={filteredProducts.indexOf(product) < 6}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover object-center grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500"
+                  className="object-cover object-center group-hover:scale-105 transition-all duration-500"
                 />
 
                 {/* Gradient vignette */}

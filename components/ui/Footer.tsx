@@ -10,7 +10,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="relative z-20 bg-[#030406] text-[#f8fafc] border-t border-white/10 pt-20 pb-12 px-5 sm:px-8">
+    <footer className="relative z-20 bg-[#030406] text-[#f8fafc] border-t border-white/10 pt-20 pb-12 px-5 sm:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           {/* Brand Col (5 cols) */}

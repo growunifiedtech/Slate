@@ -57,7 +57,7 @@ export default function ProductModal({
               fill
               unoptimized
               priority
-              className="object-cover object-center grayscale contrast-125 transition-all duration-300"
+              className="object-cover object-center transition-all duration-300"
             />
           </div>
 
@@ -72,7 +72,7 @@ export default function ProductModal({
                     activeImageIdx === idx ? 'border-white scale-105' : 'border-white/20 opacity-60 hover:opacity-100'
                   }`}
                 >
-                  <Image src={img} alt="" fill unoptimized className="object-cover grayscale" />
+                  <Image src={img} alt="" fill unoptimized className="object-cover" />
                 </button>
               ))}
             </div>
